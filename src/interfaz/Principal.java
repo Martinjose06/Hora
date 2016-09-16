@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
 
 import clases.*;
@@ -17,7 +16,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    Hora h,h2;
+    Hora h, h2;
+
     public Principal() {
         initComponents();
         txtHoras.requestFocusInWindow();
@@ -81,8 +81,26 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setText("Seconds");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+
+        txtHoras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHorasKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 70, -1));
+
+        txtMinutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMinutosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 70, -1));
+
+        txtSegundos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSegundosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 70, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Options", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 13))); // NOI18N
@@ -153,16 +171,34 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel5.setText("Hours");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        txtHoras1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHoras1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtHoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 70, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel6.setText("Minutes");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+
+        txtMinutos1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMinutos1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMinutos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 70, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel7.setText("Seconds");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
+
+        txtSegundos1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSegundos1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtSegundos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 70, -1));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -204,9 +240,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdCrearActionPerformed
 
     private void cmdValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValidarActionPerformed
-        try{
-        h.validar(h2);
-        } catch (Exception e){
+        try {
+            h.validar(h2);
+        } catch (Exception e) {
         }
         cmdValidar.setEnabled(false);
     }//GEN-LAST:event_cmdValidarActionPerformed
@@ -215,24 +251,24 @@ public class Principal extends javax.swing.JFrame {
         txtResultado.setText("");
         String aux = null;
         try {
-        aux = h.mostrar(h2);
-        } catch (Exception e){
+            aux = h.mostrar(h2);
+        } catch (Exception e) {
         }
         txtResultado.append(aux);
-        
+
     }//GEN-LAST:event_cmdMostrarActionPerformed
 
     private void cmdIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdIgualActionPerformed
-        try{
-        h.igual(h2);
-        }catch (Exception e){
+        try {
+            h.igual(h2);
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_cmdIgualActionPerformed
 
     private void cmdMayorMenorQueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMayorMenorQueActionPerformed
         try {
-        h.MayorQue(h2);
-        } catch (Exception e){
+            h.MayorQue(h2);
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_cmdMayorMenorQueActionPerformed
 
@@ -247,6 +283,66 @@ public class Principal extends javax.swing.JFrame {
         txtResultado.setText("");
         txtHoras.requestFocusInWindow();
     }//GEN-LAST:event_cmdRestaurarActionPerformed
+
+    private void txtHorasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHorasKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtHorasKeyTyped
+
+    private void txtMinutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinutosKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtMinutosKeyTyped
+
+    private void txtSegundosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundosKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtSegundosKeyTyped
+
+    private void txtHoras1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoras1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtHoras1KeyTyped
+
+    private void txtMinutos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinutos1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtMinutos1KeyTyped
+
+    private void txtSegundos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundos1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtSegundos1KeyTyped
 
     /**
      * @param args the command line arguments
